@@ -1,42 +1,34 @@
 ﻿@{
 }
 
+@model SpaDay.ViewModels.AddUserViewModel;
+
 <h1>Sign Up Form</h1>
 
-@if (ViewBag.error != null)
-{
-    <p>@ViewBag.error</p>
-}
-
 <form method="post" action="/user">
-    Username:
-    <br>
-    @if (ViewBag.error == null)
-    {
-        <input type="text" name="username" />
-    }
-    else
-    {
-        <input type="text" name="username" value="@ViewBag.userName" />
-    }
-    <br>
-    Email:
-    <br>
-    @if (ViewBag.error == null)
-    {
-        <input type="email" name="email" />
-    }
-    else
-    {
-        <input type="email" name="email" value="@ViewBag.eMail" />
-    }
-    <br>
-    Password:
-    <input type="password" name="password" />
-    <br>
-    Confirm Password:
-    <br>
-    <input type="password" name="verify" />
-    <br>
+    <label asp-for="Username">Username:</label>
+    <br />
+    <input asp-for="Username" value="@ViewBag.userName" type="text" />
+    <span asp-validation-for="Username"></span>
+    <br />
+
+    <label asp-for="Email">E-Mail Address:</label>
+    <br />
+    <input asp-for="Email" value="@ViewBag.eMail" type="email" />
+    <span asp-validation-for="Email"></span>
+    <br />
+    
+    <label asp-for="Password">Password:</label>
+    <br />
+    <input asp-for="Password" type="password" />
+    <span asp-validation-for="Password"></span>
+    <br />
+
+    <label asp-for="VerifyPassword">Verify Password:</label>
+    <br />
+    <input asp-for="VerifyPassword" type="password" />
+    <span asp-validation-for="VerifyPassword"></span>
+    <br />
+
     <input type='submit' value='Submit'>
 </form>
