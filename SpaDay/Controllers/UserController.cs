@@ -14,20 +14,18 @@ namespace SpaDay.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("/user/add")]
         public IActionResult Add()
         {
-            return View("Add");
+            return View();
         }
 
         [HttpPost]
-        [Route("/user/add")]
+        [Route("/user")]
         public IActionResult SubmitAddUserForm(User newUser, string verify)
         {
             if (verify == newUser.Password)
             {
-                ViewBag.Username = newUser.Username;
+                ViewBag.User = newUser;
                 return View("Index");
             }
             else
